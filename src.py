@@ -40,7 +40,7 @@ def getFrechetMean(
         # with torch.no_grad():
         #     C -= C.grad*optimizerkwargs["lr"]
         
-        # print(f"frechetME: {i+1}/{maxiter}: {loss:.6e}: {C}: {C.grad}")
+        # logger(f"frechetME: {i+1}/{maxiter}: {loss:.6e}: {C}: {C.grad}")
         if torch.norm(loss_old-loss.detach(), p=threshold_order)<threshold:
             logger(f"getFrechetMean: converged in {i+1} steps!")
             return C.detach().numpy()
